@@ -1,15 +1,21 @@
 # Notifier.py Class Documentation
 
 ## Overview
-Provides different methods for contacting devices in different ways, such as by email or calling. This class uses Selenium Webscraping to preform all actions and thus requires Selenium to be installed. To install Selenium, run the command:
+Provides different methods for contacting devices in different ways. By importing this library, one line of code can preform notification actions such as calling a phone or sending an email. This class uses Selenium Webscraping to preform all actions and thus requires Selenium to be installed. To install Selenium, run the command:
 
 ```bash
     pip install selenium
 ```
+To add this library to a program, add this to the top of the file:
+
+```python
+    import Notifier
+```
 
 ## Documentation
 
-- `sendEmailWithDriver(driver: webdriver.Chrome, message: str, recipientEmailAddress: str) -> None`
+- `Notifier.sendEmailWithDriver(driver: webdriver.Chrome, message: str, recipientEmailAddress: str) -> None`
+
     Sends an email with an already initialized driver. The method with create a new tab, send the email, then close the tab. Note that this method can take some time to preform, and it will block the current script until completion. The email will come from the address 'no-reply@mail.text-compare.com'
     Args:
     - `driver` - The Selenium Chrome webdriver to use.
@@ -17,7 +23,8 @@ Provides different methods for contacting devices in different ways, such as by 
     - `recipientEmailAddress` - The reciever of the email. Make sure it is a valid email address.
     Special thanks to [https://text-compare.com](https://text-compare.com) for allowing this service.
 &nbsp;
-- `sendEmail(message: str, recipientEmailAddress: str) -> None`
+- `Notifier.sendEmail(message: str, recipientEmailAddress: str) -> None`
+  
     Sends an email to the given recipient email address. Note that this method can take some time to preform, and it will block the current script until completion. This method opens a webpage and uses a service to send the email (the service was not meant to send emails). The email will come from the address 'no-reply@mail.text-compare.com' \n
     IMPORTANT: There cannot be another webdriver running in the program. Use `sendEmailWithDriver()` if a driver is already opened.\n
     Args:
@@ -25,7 +32,8 @@ Provides different methods for contacting devices in different ways, such as by 
     - recipientEmailAddress - The reciever of the email.\n
     Special thanks to https://text-compare.com for allowing this service.
 &nbsp;
-- `call(number: str, hangUpAfterSeconds: float=60, countryCode: int | str=1) -> None`
+- `Notifier.call(number: str, hangUpAfterSeconds: float=60, countryCode: int | str=1) -> None`
+  
     Calls the given number. Note that this method can take some time to preform, and it will block the current script until completion. The call will come from the number `+31 6 33 27 32 15` (The call is from the Netherlands).\n
     IMPORTANT: There cannot be another webdriver running in the program. The program will have to close the driver, call this method, then reinitialize the driver.\n
     Args:
