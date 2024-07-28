@@ -32,6 +32,7 @@ class Notifier:
         driver.find_element(By.ID, "id_email_address").send_keys(recipientEmailAddress)
         driver.find_element(By.ID, "sendComparisonButton").click()
         driver.close()
+        driver.switch_to.window(driver.window_handles[numTabs - 1])
 
 
     def sendEmail(message: str, recipientEmailAddress: str) -> None:
